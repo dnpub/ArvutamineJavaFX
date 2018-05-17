@@ -10,6 +10,7 @@ public class AbiinfoController {
     @FXML
     private void sulgeAbiinfo(){
         Stage stage = (Stage) abiinfoSulgeNupp.getScene().getWindow();
+
         stage.close();
     }
 }

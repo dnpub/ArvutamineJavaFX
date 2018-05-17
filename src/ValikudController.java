@@ -12,10 +12,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ValikudController {
+    public ValikudController(){}
 
     @FXML
     private Button abiinfoNuppValikudLehel;
@@ -69,6 +72,7 @@ public class ValikudController {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
+
     }
 
     @FXML
@@ -79,42 +83,33 @@ public class ValikudController {
 
     @FXML
     private void AlustaLahendamist() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Ylesanded.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Ylesanded.fxml"));
+        Parent root = loader.load();
+        YlesandedController ylesandedController= loader.getController();
+        ylesandedController.setLahendajaNimiTekst(lahendajaNimeSisestuslahter.getText());
+        ylesandedController.setTeheteValikTekst(tehted);
+        ylesandedController.setRaskusasteTekst(raskusastmeSisestuslahter.getText());
+       
+
+        abiinfoNuppValikudLehel.getScene().setRoot(root);
+
 
     }
 
-    public String getLahendajaNimi(String lahendajaNimeSisestuslahter) {
-        return lahendajaNimeSisestuslahter;
-    }
 
-    public int getYlesannetePiirarv(String ylesannetePiirarvuSisestuslahter) {
-        int piirarv = Integer.parseInt(ylesannetePiirarvuSisestuslahter);
-        return piirarv;
-    }
 
-    public int getAjaLimiit(String ajapiiranguSisestuslahter) {
-        int ajapiir = Integer.parseInt(ajapiiranguSisestuslahter);
-        return ajapiir;
-    }
-
-    public int getRaskusaste(String raskusastmeSisestuslahter) {
-        int raskusaste = Integer.parseInt(raskusastmeSisestuslahter);
-        return raskusaste;
-    }
-
-    public List<String> tehted = new ArrayList<String>();
+    public Set<String> tehted = new HashSet<String>();
 
     @FXML
     private void vajutaPlussNupp() {
         plussNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tehted.add("+");
+
             }
         });
+        tehted.add("+");
         System.out.println("+");
     }
 
@@ -123,9 +118,10 @@ public class ValikudController {
         miinusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tehted.add("-");
+
             }
         });
+        tehted.add("-");
         System.out.println("-");
     }
 
@@ -134,9 +130,10 @@ public class ValikudController {
         jagamisNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tehted.add("/");
+
             }
         });
+        tehted.add("/");
         System.out.println("/");
     }
 
@@ -145,9 +142,10 @@ public class ValikudController {
         korrutusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tehted.add("*");
+
             }
         });
+        tehted.add("*");
         System.out.println("*");
     }
 
@@ -182,6 +180,17 @@ public class ValikudController {
         }
 
         return false; // eelnevalt vaja ära määrata et üks peab vähemalt selekteeritud olema
+    }
+
+    @FXML
+    private void initialize(){
+
+    }
+
+    public void Valikud(){
+        String nimi = lahendajaNimeSisestuslahter.getText();
+        Integer ylhulk = Integer.parseInt(ylesannetePiirarvuSisestuslahter.getText());
+
     }
 
 
