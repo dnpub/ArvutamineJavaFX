@@ -57,6 +57,11 @@ public class ValikudController {
     @FXML
     private RadioButton ylesanneteHulgaKauduPiiramiseRaadionupp;
 
+
+
+
+
+
     @FXML
     private void avaAbiinfo() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Abiinfo.fxml"));
@@ -100,36 +105,85 @@ public class ValikudController {
         return raskusaste;
     }
 
-    public List<String> tehted =new ArrayList<String>();
+    public List<String> tehted = new ArrayList<String>();
 
     @FXML
-    private void vajutaPlussNupp(){
-        plussNupp.addEventHandler(MouseEvent.MOUSE_CLICKED,  new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent event) { tehted.add("+");}});
+    private void vajutaPlussNupp() {
+        plussNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                tehted.add("+");
+            }
+        });
         System.out.println("+");
     }
+
     @FXML
-    private void vajutaMiinusNupp(){
-       miinusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED,  new EventHandler<MouseEvent>() {
-           @Override public void handle(MouseEvent event) { tehted.add("-");}});
+    private void vajutaMiinusNupp() {
+        miinusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                tehted.add("-");
+            }
+        });
         System.out.println("-");
     }
+
     @FXML
-    private void vajutaJagamisNupp(){
-        jagamisNupp.addEventHandler(MouseEvent.MOUSE_CLICKED,  new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent event) { tehted.add("/");}});
+    private void vajutaJagamisNupp() {
+        jagamisNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                tehted.add("/");
+            }
+        });
         System.out.println("/");
     }
+
     @FXML
-    private void vajutaKorrutusNupp(){
-        korrutusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED,  new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent event) { tehted.add("*");}});
+    private void vajutaKorrutusNupp() {
+        korrutusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                tehted.add("*");
+            }
+        });
         System.out.println("*");
     }
 
 
+    public boolean kasAjapeale() {
+        final ToggleGroup group = new ToggleGroup();
+        final String[] vastus = new String[1]; // selekteeritud nupp
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
-            
+            @Override
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle esialgne, Toggle uus) {
+                // kui
+                if (group.getSelectedToggle() != null) {
+                    RadioButton nupp = (RadioButton) group.getSelectedToggle();
+                    vastus[0] = nupp.getText();
+                    ajapiiranguSisestuslahter.setDisable(!vastus[0].contains("aeg"));
+                    ylesannetePiirarvuSisestuslahter.setDisable(!vastus[0].contains("hulk"));
+
+                    System.out.println("Vajutatud: " + nupp.getText());
+
+                }
+            }
+
+        });
+        ajaKauduPiiramiseRaadionuppylesanneteHulgaKauduPiiramiseRaadionupp.setToggleGroup(group);
+        ylesanneteHulgaKauduPiiramiseRaadionupp.setToggleGroup(group);
+
+        if (vastus[vastus.length - 1].contains("hulk")) {
+            return false;
+        } else if (vastus[vastus.length - 1].contains("aeg")) {
+            return true;
+        }
+
+        return false; // eelnevalt vaja ära määrata et üks peab vähemalt selekteeritud olema
+    }
+
 
 
 
