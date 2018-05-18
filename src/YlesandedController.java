@@ -12,6 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -61,11 +64,14 @@ public YlesandedController(){}
    @FXML
    private Text oigeidVastuseidTekst;
 
+   @FXML
+   private Text ylesandeTekst;
 
 
+
+    private Harjutuskord harjutuskord;
 
     private final Integer endtime =15; // siia tuleb panna määratud aeg
-
     private Integer starttime =0;
     private Timeline timeline;
     private IntegerProperty timeseconds= new SimpleIntegerProperty(starttime);
@@ -90,16 +96,50 @@ public YlesandedController(){}
          timeline.playFromStart();
      }
 
-     /*public void uuendaAllesJaanudAega(){
-         allesjaanudAegTekst.textProperty().bind(timeseconds2.asString());
-         timeseconds2.set(endtime);
-         timeline2 = new Timeline();
-         timeline.getKeyFrames().add(
-                 new KeyFrame(Duration.seconds(endtime+1),
-                         new KeyValue(timeseconds2, 0)));
-         timeline.playFromStart();
 
-     }*/
+   public void setHarjutuskord(Harjutuskord h){
+        harjutuskord = h;
+   }
+@FXML
+   public void setYlesandeTekst(Harjutuskord h){
+        ylesandeTekst.setText(h.genereeriÜlesanne().toString());
+   }
+
+
+    @FXML
+    private void sisestaVastus(){
+        if(!vastuseSisestuslahter.getText().isEmpty()){
+            vastuseSisestuslahter.setOnKeyPressed(new EventHandler<KeyEvent>()
+            {
+                @Override
+                public void handle(KeyEvent w)
+                {
+                    if (w.getCode().equals(KeyCode.ENTER))
+                    {
+                        String vastus = vastuseSisestuslahter.getText();
+
+                        Integer vastusInt =Integer.parseInt(vastus);
+
+                        vastuseSisestuslahter.clear();
+                        setYlesandeTekst(harjutuskord);
+                    }
+                }
+            });
+            kinnitaVastusNupp.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                public void handle(MouseEvent e) {
+                    String vastus = vastuseSisestuslahter.getText();
+
+                    Integer vastusInt =Integer.parseInt(vastus);
+
+                    vastuseSisestuslahter.clear();
+                    setYlesandeTekst(harjutuskord);
+                }
+
+
+            });}
+
+    }
+
      public void setYlesandeidKokkuTekst(String ylpiirarv){
          if(!ylpiirarv.isEmpty()){
      ylesandeidKokkuTekst.setText(ylpiirarv);}
@@ -146,6 +186,8 @@ public YlesandedController(){}
     @FXML
     private void initialize(){
         System.out.println("2");
+
+
     }
 
 

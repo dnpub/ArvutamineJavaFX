@@ -90,6 +90,14 @@ public class ValikudController {
         ylesandedController.uuendaAega();
         ylesandedController.setYlesandeidKokkuTekst(ylesannetePiirarvuSisestuslahter.getText());
 
+        if(kasAjapeale()){
+        Harjutuskord h1 = new Harjutuskord(true,Integer.parseInt(ajapiiranguSisestuslahter.getText()),tehted,Integer.parseInt(raskusastmeSisestuslahter.getText()));
+            ylesandedController.setHarjutuskord(h1);
+        ylesandedController.setYlesandeTekst(h1);}
+        if(!kasAjapeale()){
+            Harjutuskord h1 = new Harjutuskord(false,Integer.parseInt(ylesannetePiirarvuSisestuslahter.getText()),tehted,Integer.parseInt(raskusastmeSisestuslahter.getText()));
+            ylesandedController.setHarjutuskord(h1);
+            ylesandedController.setYlesandeTekst(h1);}
 
         abiinfoNuppValikudLehel.getScene().setRoot(root);
 
