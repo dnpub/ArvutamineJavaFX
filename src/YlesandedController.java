@@ -1,6 +1,9 @@
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -42,10 +45,49 @@ public YlesandedController(){}
     @FXML
     private Text raskusasteTekst;
 
-    @FXML Text kulunudAegTekst;
+    @FXML
+    private Text kulunudAegTekst;
+
+    @FXML
+    private Text allesjaanudAegTekst;
 
 
+    private final Integer endtime =15;
 
+    private Integer starttime =0;
+    private Timeline timeline;
+    private IntegerProperty timeseconds= new SimpleIntegerProperty(starttime);
+    private IntegerProperty timeseconds2= new SimpleIntegerProperty(endtime);
+
+
+    public void uuendaAega(){
+        kulunudAegTekst.textProperty().bind(timeseconds.asString());
+        allesjaanudAegTekst.textProperty().bind(timeseconds2.asString());
+        timeseconds.set(starttime);
+
+        timeline = new Timeline();
+
+         timeline.getKeyFrames().add(
+                 new KeyFrame(Duration.seconds(endtime+1),
+                         new KeyValue(timeseconds, endtime)));
+
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(endtime+1),
+                        new KeyValue(timeseconds2, 0)));
+
+         timeline.playFromStart();
+     }
+
+     /*public void uuendaAllesJaanudAega(){
+         allesjaanudAegTekst.textProperty().bind(timeseconds2.asString());
+         timeseconds2.set(endtime);
+         timeline2 = new Timeline();
+         timeline.getKeyFrames().add(
+                 new KeyFrame(Duration.seconds(endtime+1),
+                         new KeyValue(timeseconds2, 0)));
+         timeline.playFromStart();
+
+     }*/
 
     public  void setRaskusasteTekst(String raskusaste){
         raskusasteTekst.setText(raskusaste);

@@ -1,3 +1,5 @@
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -90,7 +92,8 @@ public class ValikudController {
         ylesandedController.setLahendajaNimiTekst(lahendajaNimeSisestuslahter.getText());
         ylesandedController.setTeheteValikTekst(tehted);
         ylesandedController.setRaskusasteTekst(raskusastmeSisestuslahter.getText());
-       
+        ylesandedController.uuendaAega();
+
 
         abiinfoNuppValikudLehel.getScene().setRoot(root);
 
