@@ -35,10 +35,10 @@
       <Text layoutX="282.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Õigeid vastuseid:" />
       <Text layoutX="527.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
       <Text fx:id="allesjaanudAegTekst" layoutX="533.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
-      <Text fx:id="ylesandeidTehtudTekst" layoutX="446.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
+      <Text fx:id="ylesandeidTehtudTekst" layoutX="446.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text layoutX="488.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
       <Text fx:id="ylesandeidKokkuTekst" layoutX="494.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
-      <Text fx:id="oigeidVastuseidTekst" layoutX="392.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
+      <Text fx:id="oigeidVastuseidTekst" layoutX="392.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Line endX="300.0" layoutX="282.0" layoutY="172.0" startX="-250.0" />
       <Line endX="300.0" layoutX="282.0" layoutY="212.0" startX="-250.0" />
       <Text fx:id="vastuseHindamiseTekst" layoutX="198.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" />

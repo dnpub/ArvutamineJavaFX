@@ -70,6 +70,8 @@ public YlesandedController(){}
    private Text vastuseHindamiseTekst;
 
    private Integer Kontrollvastus;
+   private Integer õigeidVastuseid=0;
+   private Integer ylesandeidVastatud=0;
 
 
 
@@ -82,7 +84,8 @@ public YlesandedController(){}
     private IntegerProperty timeseconds2= new SimpleIntegerProperty(endtime);
 
 
-    public void uuendaAega(){
+    public void uuendaAega(boolean kasajapeale){
+        if(kasajapeale){
         kulunudAegTekst.textProperty().bind(timeseconds.asString());
         allesjaanudAegTekst.textProperty().bind(timeseconds2.asString());
         timeseconds.set(starttime);
@@ -97,7 +100,20 @@ public YlesandedController(){}
                 new KeyFrame(Duration.seconds(endtime+1),
                         new KeyValue(timeseconds2, 0)));
 
-         timeline.playFromStart();
+         timeline.playFromStart();}
+         else{kulunudAegTekst.textProperty().bind(timeseconds.asString());
+            allesjaanudAegTekst.setText("-");
+            timeseconds.set(starttime);
+
+            timeline = new Timeline();
+
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(endtime+1),
+                            new KeyValue(timeseconds, endtime)));
+
+
+
+            timeline.playFromStart();}
      }
 
 
@@ -111,6 +127,17 @@ public YlesandedController(){}
         ylesandeTekst.setText(yl1.toString());
         Kontrollvastus =Integer.parseInt(yl1.getVastus());
 
+   }
+
+   @FXML
+   public void setOigeidVastuseidTekst(){
+        oigeidVastuseidTekst.setText(õigeidVastuseid.toString());
+
+   }
+
+   @FXML
+   public void setYlesandeidTehtudTekst(){
+        ylesandeidTehtudTekst.setText(ylesandeidVastatud.toString());
    }
 
 
@@ -133,8 +160,14 @@ public YlesandedController(){}
                         vastuseSisestuslahter.clear();
                         if(vastusInt.equals(Kontrollvastus)){
                             vastuseHindamiseTekst.setText("Tubli! Õige vastus!");
+                            õigeidVastuseid++;
+                            setOigeidVastuseidTekst();
+                            ylesandeidVastatud++;
+                            setYlesandeidTehtudTekst();;
                         }
-                        else{vastuseHindamiseTekst.setText("Vale! Õige vastus oli: " + Kontrollvastus);}
+                        else{vastuseHindamiseTekst.setText("Vale! Õige vastus oli: " + Kontrollvastus);
+                            ylesandeidVastatud++;
+                            setYlesandeidTehtudTekst();;}
                         setYlesandeTekst(harjutuskord);
                     }
                 }
@@ -148,8 +181,14 @@ public YlesandedController(){}
                     vastuseSisestuslahter.clear(); vastuseSisestuslahter.clear();
                     if(vastusInt.equals(Kontrollvastus)){
                         vastuseHindamiseTekst.setText("Tubli! Õige vastus!");
+                        õigeidVastuseid++;
+                        setOigeidVastuseidTekst();
+                        ylesandeidVastatud++;
+                        setYlesandeidTehtudTekst();
                     }
-                    else{vastuseHindamiseTekst.setText("Vale vastus! Õige oli: " + Kontrollvastus);}
+                    else{vastuseHindamiseTekst.setText("Vale vastus! Õige oli: " + Kontrollvastus);
+                        ylesandeidVastatud++;
+                        setYlesandeidTehtudTekst();;}
                     setYlesandeTekst(harjutuskord);
 
                 }
@@ -162,7 +201,7 @@ public YlesandedController(){}
      public void setYlesandeidKokkuTekst(String ylpiirarv){
          if(!ylpiirarv.isEmpty()){
      ylesandeidKokkuTekst.setText(ylpiirarv);}
-     else{ ylesandeidKokkuTekst.setText("Pole määratud");}
+     else{ ylesandeidKokkuTekst.setText("-");}
 
      }
     public  void setRaskusasteTekst(String raskusaste){
