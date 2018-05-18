@@ -41,7 +41,7 @@
       <Text fx:id="oigeidVastuseidTekst" layoutX="392.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
       <Line endX="300.0" layoutX="282.0" layoutY="172.0" startX="-250.0" />
       <Line endX="300.0" layoutX="282.0" layoutY="212.0" startX="-250.0" />
-      <Text fx:id="vastuseHindamiseTekst" layoutX="198.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja teate teksti jaoks" textAlignment="CENTER" />
+      <Text fx:id="vastuseHindamiseTekst" layoutX="198.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" />
       <Text fx:id="ylesandeTekst" layoutX="184.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja ülesande teksti jaoks" textAlignment="CENTER" />
       <Text fx:id="sisestaVastusTekst" layoutX="236.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta vastus (täisarv):" textAlignment="CENTER" />
       <TextField fx:id="vastuseSisestuslahter" layoutX="223.0" layoutY="280.0" onKeyReleased="#sisestaVastus" />

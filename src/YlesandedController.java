@@ -66,6 +66,10 @@ public YlesandedController(){}
 
    @FXML
    private Text ylesandeTekst;
+   @FXML
+   private Text vastuseHindamiseTekst;
+
+   private Integer Kontrollvastus;
 
 
 
@@ -99,16 +103,22 @@ public YlesandedController(){}
 
    public void setHarjutuskord(Harjutuskord h){
         harjutuskord = h;
+
    }
 @FXML
    public void setYlesandeTekst(Harjutuskord h){
-        ylesandeTekst.setText(h.genereeriÜlesanne().toString());
+        Ülesanne yl1 = h.genereeriÜlesanne();
+        ylesandeTekst.setText(yl1.toString());
+        Kontrollvastus =Integer.parseInt(yl1.getVastus());
+
    }
 
 
     @FXML
     private void sisestaVastus(){
+
         if(!vastuseSisestuslahter.getText().isEmpty()){
+            kinnitaVastusNupp.setDisable(false);
             vastuseSisestuslahter.setOnKeyPressed(new EventHandler<KeyEvent>()
             {
                 @Override
@@ -121,6 +131,10 @@ public YlesandedController(){}
                         Integer vastusInt =Integer.parseInt(vastus);
 
                         vastuseSisestuslahter.clear();
+                        if(vastusInt.equals(Kontrollvastus)){
+                            vastuseHindamiseTekst.setText("Tubli! Õige vastus!");
+                        }
+                        else{vastuseHindamiseTekst.setText("Vale! Õige vastus oli: " + Kontrollvastus);}
                         setYlesandeTekst(harjutuskord);
                     }
                 }
@@ -131,8 +145,13 @@ public YlesandedController(){}
 
                     Integer vastusInt =Integer.parseInt(vastus);
 
-                    vastuseSisestuslahter.clear();
+                    vastuseSisestuslahter.clear(); vastuseSisestuslahter.clear();
+                    if(vastusInt.equals(Kontrollvastus)){
+                        vastuseHindamiseTekst.setText("Tubli! Õige vastus!");
+                    }
+                    else{vastuseHindamiseTekst.setText("Vale vastus! Õige oli: " + Kontrollvastus);}
                     setYlesandeTekst(harjutuskord);
+
                 }
 
 
@@ -185,6 +204,7 @@ public YlesandedController(){}
 
     @FXML
     private void initialize(){
+        kinnitaVastusNupp.setDisable(true);
         System.out.println("2");
 
 
