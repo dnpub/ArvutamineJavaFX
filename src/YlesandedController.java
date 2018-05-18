@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
+import javax.swing.text.TabExpander;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
@@ -51,8 +52,19 @@ public YlesandedController(){}
     @FXML
     private Text allesjaanudAegTekst;
 
+   @FXML
+    private Text ylesandeidKokkuTekst;
 
-    private final Integer endtime =15;
+   @FXML
+   private Text ylesandeidTehtudTekst;
+
+   @FXML
+   private Text oigeidVastuseidTekst;
+
+
+
+
+    private final Integer endtime =15; // siia tuleb panna määratud aeg
 
     private Integer starttime =0;
     private Timeline timeline;
@@ -88,7 +100,12 @@ public YlesandedController(){}
          timeline.playFromStart();
 
      }*/
+     public void setYlesandeidKokkuTekst(String ylpiirarv){
+         if(!ylpiirarv.isEmpty()){
+     ylesandeidKokkuTekst.setText(ylpiirarv);}
+     else{ ylesandeidKokkuTekst.setText("Pole määratud");}
 
+     }
     public  void setRaskusasteTekst(String raskusaste){
         raskusasteTekst.setText(raskusaste);
 

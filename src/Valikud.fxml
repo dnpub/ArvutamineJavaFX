@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onMouseClicked="#kasAjapeale" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ValikudController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ValikudController">
    <children>
 
             <Button fx:id="abiinfoNuppValikudLehel" layoutX="486.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#avaAbiinfo" text="Abiinfo" />
@@ -23,24 +23,24 @@
          </font>
       </Text>
       <Text layoutX="21.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta oma nimi:" />
-      <TextField fx:id="lahendajaNimeSisestuslahter" layoutX="146.0" layoutY="66.0" prefHeight="27.0" prefWidth="291.0" />
+      <TextField fx:id="lahendajaNimeSisestuslahter" layoutX="146.0" layoutY="66.0" onKeyReleased="#lubaAlustada" prefHeight="27.0" prefWidth="291.0" />
       <Text layoutX="366.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta ülesannete arv:" />
-      <TextField fx:id="ylesannetePiirarvuSisestuslahter" layoutX="516.0" layoutY="120.0" prefHeight="27.0" prefWidth="70.0" />
+      <TextField fx:id="ylesannetePiirarvuSisestuslahter" layoutX="516.0" layoutY="120.0" onKeyReleased="#lubaAlustada" prefHeight="27.0" prefWidth="70.0" />
       <Text layoutX="366.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta aeg minutites:" />
-      <TextField fx:id="ajapiiranguSisestuslahter" layoutX="516.0" layoutY="159.0" prefHeight="27.0" prefWidth="70.0" />
+      <TextField fx:id="ajapiiranguSisestuslahter" layoutX="516.0" layoutY="159.0" onKeyReleased="#lubaAlustada" prefHeight="27.0" prefWidth="70.0" />
       <Text layoutX="21.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vali tehted:" />
-      <Button fx:id="plussNupp" layoutX="106.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaPlussNupp" text="+" />
-      <Button fx:id="jagamisNupp" layoutX="265.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaJagamisNupp" text="/" />
-      <Button fx:id="korrutusNupp" layoutX="211.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaKorrutusNupp" text="*" />
-      <Button fx:id="miinusNupp" layoutX="159.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaMiinusNupp" text="-" />
+      <Button fx:id="plussNupp" layoutX="106.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaTehe" text="+" />
+      <Button fx:id="jagamisNupp" layoutX="265.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaTehe" text="/" />
+      <Button fx:id="korrutusNupp" layoutX="211.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaTehe" text="*" />
+      <Button fx:id="miinusNupp" layoutX="159.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#vajutaTehe" text="-" />
       <Text layoutX="23.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta raskusaste (täisarv, mis on kümnest suurem):" />
-      <TextField fx:id="raskusastmeSisestuslahter" layoutX="366.0" layoutY="269.0" prefHeight="27.0" prefWidth="70.0" />
+      <TextField fx:id="raskusastmeSisestuslahter" layoutX="366.0" layoutY="269.0" onKeyReleased="#lubaAlustada" prefHeight="27.0" prefWidth="70.0" />
       <Button fx:id="alustaLahendamistNupp" layoutX="177.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#AlustaLahendamist" text="Alusta lahendamist">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <RadioButton fx:id="ajaKauduPiiramiseRaadionuppylesanneteHulgaKauduPiiramiseRaadionupp" layoutX="23.0" layoutY="164.0" mnemonicParsing="false" text="Piira ülesannete lahendamise aeg" />
+      <RadioButton fx:id="ajaKauduPiiramiseRaadionupp" layoutX="23.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#kasAjapeale" text="Piira ülesannete lahendamise aeg" />
       <RadioButton fx:id="ylesanneteHulgaKauduPiiramiseRaadionupp" layoutX="23.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#kasAjapeale" text="Piira ülesannete hulk" />
    </children>
 </AnchorPane>
