@@ -77,14 +77,19 @@ public YlesandedController(){}
 
     private Harjutuskord harjutuskord;
 
-    private final Integer endtime =15; // siia tuleb panna määratud aeg
+   // public final Integer endtime =15; // siia tuleb panna määratud aeg
     private Integer starttime =0;
     private Timeline timeline;
-    private IntegerProperty timeseconds= new SimpleIntegerProperty(starttime);
-    private IntegerProperty timeseconds2= new SimpleIntegerProperty(endtime);
+    private IntegerProperty timeseconds;//= new SimpleIntegerProperty(starttime);
+    private IntegerProperty timeseconds2;//= new SimpleIntegerProperty(endtime);
 
 
-    public void uuendaAega(boolean kasajapeale){
+
+
+    public void uuendaAega(boolean kasajapeale, int endtime){
+
+        timeseconds= new SimpleIntegerProperty(starttime);
+        timeseconds2= new SimpleIntegerProperty(endtime);
         if(kasajapeale){
         kulunudAegTekst.textProperty().bind(timeseconds.asString());
         allesjaanudAegTekst.textProperty().bind(timeseconds2.asString());

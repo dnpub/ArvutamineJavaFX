@@ -87,7 +87,8 @@ public class ValikudController {
         ylesandedController.setLahendajaNimiTekst(lahendajaNimeSisestuslahter.getText());
         ylesandedController.setTeheteValikTekst(tehted);
         ylesandedController.setRaskusasteTekst(raskusastmeSisestuslahter.getText());
-        ylesandedController.uuendaAega(kasAjapeale());
+
+        ylesandedController.uuendaAega(kasAjapeale(), Integer.parseInt(ajapiiranguSisestuslahter.getText())*60);
         ylesandedController.setYlesandeidKokkuTekst(ylesannetePiirarvuSisestuslahter.getText());
 
         if(kasAjapeale()){
