@@ -72,6 +72,17 @@ public YlesandedController(){}
    private Integer Kontrollvastus;
    private Integer õigeidVastuseid=0;
    private Integer ylesandeidVastatud=0;
+   private boolean kasAjaPeale;
+   private Integer kontrollAeg;
+
+
+   public void setKontrollAeg(int aegMinutites){
+       kontrollAeg = aegMinutites*60;
+   }
+
+   public void setKasAjaPeale(boolean t){
+       kasAjaPeale = t;
+   }
 
 
 
@@ -93,6 +104,7 @@ public YlesandedController(){}
         if(kasajapeale){
         kulunudAegTekst.textProperty().bind(timeseconds.asString());
         allesjaanudAegTekst.textProperty().bind(timeseconds2.asString());
+
         timeseconds.set(starttime);
 
         timeline = new Timeline();
@@ -105,8 +117,11 @@ public YlesandedController(){}
                 new KeyFrame(Duration.seconds(endtime+1),
                         new KeyValue(timeseconds2, 0)));
 
-         timeline.playFromStart();}
+
+         timeline.playFromStart();
+         }
          else{kulunudAegTekst.textProperty().bind(timeseconds.asString());
+
             allesjaanudAegTekst.setText("-");
             timeseconds.set(starttime);
 
@@ -129,8 +144,30 @@ public YlesandedController(){}
 @FXML
    public void setYlesandeTekst(Harjutuskord h){
         Ülesanne yl1 = h.genereeriÜlesanne();
+        if(kasAjaPeale){
+        if(Integer.parseInt(kulunudAegTekst.getText())<kontrollAeg){
         ylesandeTekst.setText(yl1.toString());
-        Kontrollvastus =Integer.parseInt(yl1.getVastus());
+        Kontrollvastus =Integer.parseInt(yl1.getVastus());}
+        else if(Integer.parseInt(kulunudAegTekst.getText())>=kontrollAeg){
+           // System.out.println(kulunudAegTekst.getText());
+            //System.out.println(kontrollAeg);
+            kinnitaVastusNupp.setDisable(true);
+            vastuseSisestuslahter.setDisable(true);
+            vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis!"); // tuleb paremini lahendada see
+            }
+        }
+        if(!kasAjaPeale){
+            if(Integer.parseInt(ylesandeidTehtudTekst.getText()) < Integer.parseInt(ylesandeidKokkuTekst.getText())){
+                ylesandeTekst.setText(yl1.toString());
+                Kontrollvastus =Integer.parseInt(yl1.getVastus());
+            }
+            else{kinnitaVastusNupp.setDisable(true);
+            vastuseSisestuslahter.setDisable(true);
+            ylesandeTekst.setText("");
+                vastuseHindamiseTekst.setText("Tubli! Kõik ülesanded on lahendatud!");}
+        }
+
+
 
    }
 

@@ -87,8 +87,16 @@ public class ValikudController {
         ylesandedController.setLahendajaNimiTekst(lahendajaNimeSisestuslahter.getText());
         ylesandedController.setTeheteValikTekst(tehted);
         ylesandedController.setRaskusasteTekst(raskusastmeSisestuslahter.getText());
+        ylesandedController.setKasAjaPeale(kasAjapeale());
 
-        ylesandedController.uuendaAega(kasAjapeale(), Integer.parseInt(ajapiiranguSisestuslahter.getText())*60);
+
+        if(!ajapiiranguSisestuslahter.getText().isEmpty()){
+            ylesandedController.setKontrollAeg(Integer.parseInt(ajapiiranguSisestuslahter.getText()));
+        ylesandedController.uuendaAega(kasAjapeale(), Integer.parseInt(ajapiiranguSisestuslahter.getText())*60);}
+        else if(ajapiiranguSisestuslahter.getText().isEmpty()){
+
+            ylesandedController.uuendaAega(kasAjapeale(), 10000000); //tegelikult peaks endtime siin olema nö lõpmatus - exception vaja tekitada vajadusel
+        }
         ylesandedController.setYlesandeidKokkuTekst(ylesannetePiirarvuSisestuslahter.getText());
 
         if(kasAjapeale()){
