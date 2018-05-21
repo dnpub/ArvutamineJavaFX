@@ -9,12 +9,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 
 public class ValikudController {
@@ -88,7 +92,6 @@ public class ValikudController {
         ylesandedController.setTeheteValikTekst(tehted);
         ylesandedController.setRaskusasteTekst(raskusastmeSisestuslahter.getText());
         ylesandedController.setKasAjaPeale(kasAjapeale());
-
 
         if(!ajapiiranguSisestuslahter.getText().isEmpty()){
             ylesandedController.setKontrollAeg(Integer.parseInt(ajapiiranguSisestuslahter.getText()));
@@ -222,7 +225,7 @@ public class ValikudController {
 
     @FXML
     public void lubaAlustada() {
-
+        String teade="";
 
         String nimi = lahendajaNimeSisestuslahter.getText();
         String raskusaste = raskusastmeSisestuslahter.getText();
@@ -238,9 +241,23 @@ public class ValikudController {
             nupud.get(i).setDisable(onProbleemTehetega);
         }
 
-        if(!raskusaste.isEmpty()){alustaLahendamistNupp.setDisable(false);}
+        if(!raskusaste.isEmpty()){
+
+
+                alustaLahendamistNupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");
+            alustaLahendamistNupp.setDisable(false);
+
+
+        }
+        if(!teade.isEmpty()  ){
+        System.out.println(teade);}
 
     }
+
+
+
+
+
 
 
     private List<Button> nupud = new ArrayList<Button>();
@@ -261,6 +278,7 @@ public class ValikudController {
         raskusastmeSisestuslahter.setDisable(true);
         ajaKauduPiiramiseRaadionupp.setDisable(true);
         ylesanneteHulgaKauduPiiramiseRaadionupp.setDisable(true);
+
 
 
     }

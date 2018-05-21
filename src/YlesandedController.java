@@ -1,3 +1,11 @@
+/*TODO: akna mõõtmete muutmine - seo sisuga
+/TODO: vigade händlimine (täisarvud) ja esitus valikud aknas
+TODO: kujundus
+TODO: abiinfo import failist
+TODO: harjutuskäigu statistika salvestamine faili - vastav nupp või hüpikaken Ylesanded lehele.
+TODO: kujundus
+TODO: koodi optimeerimine
+*/
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -117,8 +125,15 @@ public YlesandedController(){}
                 new KeyFrame(Duration.seconds(endtime+1),
                         new KeyValue(timeseconds2, 0)));
 
+        timeline.setOnFinished(event -> {vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis!");
+            kinnitaVastusNupp.setDisable(true);
+            vastuseSisestuslahter.setDisable(true);
+            ylesandeTekst.setText("");
+            katkestaNuppYlesandedLehel.setText("Sulge");
+        }) ;
 
          timeline.playFromStart();
+
          }
          else{kulunudAegTekst.textProperty().bind(timeseconds.asString());
 
@@ -130,9 +145,6 @@ public YlesandedController(){}
             timeline.getKeyFrames().add(
                     new KeyFrame(Duration.seconds(endtime+1),
                             new KeyValue(timeseconds, endtime)));
-
-
-
             timeline.playFromStart();}
      }
 
@@ -148,13 +160,13 @@ public YlesandedController(){}
         if(Integer.parseInt(kulunudAegTekst.getText())<kontrollAeg){
         ylesandeTekst.setText(yl1.toString());
         Kontrollvastus =Integer.parseInt(yl1.getVastus());}
-        else if(Integer.parseInt(kulunudAegTekst.getText())>=kontrollAeg){
+       /* else if(Integer.parseInt(kulunudAegTekst.getText())>=kontrollAeg){
            // System.out.println(kulunudAegTekst.getText());
             //System.out.println(kontrollAeg);
             kinnitaVastusNupp.setDisable(true);
             vastuseSisestuslahter.setDisable(true);
-            vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis!"); // tuleb paremini lahendada see
-            }
+           // vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis!"); //
+            }*/
         }
         if(!kasAjaPeale){
             if(Integer.parseInt(ylesandeidTehtudTekst.getText()) < Integer.parseInt(ylesandeidKokkuTekst.getText())){
@@ -164,7 +176,9 @@ public YlesandedController(){}
             else{kinnitaVastusNupp.setDisable(true);
             vastuseSisestuslahter.setDisable(true);
             ylesandeTekst.setText("");
-                vastuseHindamiseTekst.setText("Tubli! Kõik ülesanded on lahendatud!");}
+            timeline.stop();
+                katkestaNuppYlesandedLehel.setText("Sulge");
+            vastuseHindamiseTekst.setText("Tubli! Kõik ülesanded on lahendatud!");}
         }
 
 
@@ -187,6 +201,7 @@ public YlesandedController(){}
     private void sisestaVastus(){
 
         if(!vastuseSisestuslahter.getText().isEmpty()){
+            kinnitaVastusNupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");
             kinnitaVastusNupp.setDisable(false);
             vastuseSisestuslahter.setOnKeyPressed(new EventHandler<KeyEvent>()
             {

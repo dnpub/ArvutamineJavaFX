@@ -18,6 +18,7 @@ public class Main extends Application {
         Parent root = loader.load();
         ValikudController valikudController = loader.getController();
 
+
         primaryStage.setTitle("Arvutamise harjutamine ver.2.0");
 
 
