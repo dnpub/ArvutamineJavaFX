@@ -13,8 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.FontSmoothingType;
 import javafx.stage.Stage;
 
+import javax.swing.text.Style;
 import java.awt.*;
 import java.io.IOException;
 import java.util.*;
@@ -44,16 +46,16 @@ public class ValikudController {
     private TextField raskusastmeSisestuslahter;
 
     @FXML
-    private Button plussNupp;
+    private ToggleButton plussNupp;
 
     @FXML
-    private Button jagamisNupp;
+    private ToggleButton jagamisNupp;
 
     @FXML
-    private Button korrutusNupp;
+    private ToggleButton korrutusNupp;
 
     @FXML
-    private Button miinusNupp;
+    private ToggleButton miinusNupp;
 
     @FXML
     private Button alustaLahendamistNupp;
@@ -75,6 +77,9 @@ public class ValikudController {
 
 
     }
+
+    @FXML
+    private ToggleButton togglebutton;
 
     @FXML
     private void välju() {
@@ -120,6 +125,8 @@ public class ValikudController {
 
     public Set<String> tehted = new HashSet<String>();
 
+@FXML private void vajutatogglenupp() {
+    }
     /*@FXML
     private void vajutaPlussNupp() {
         raskusastmeSisestuslahter.setDisable(false);
@@ -148,11 +155,19 @@ public class ValikudController {
 
     @FXML
     private void vajutaTehe(Event evt) {
-        Button nupp = (Button)evt.getSource();
+        ToggleButton nupp = (ToggleButton)evt.getSource();
 
         raskusastmeSisestuslahter.setDisable(false);
         String tehe = nupp.getText();
-        tehted.add(tehe);
+        if(tehted.contains(nupp.getText())){
+            tehted.remove(nupp.getText());
+            if(nupp.isSelected());{
+                nupp.setSelected(false);
+            nupp.setStyle("-fx-background-color: rgba(230, 230, 230, 1);");}
+        }
+        else{
+            if(nupp.isSelected()){nupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");}
+        tehted.add(tehe);}
         System.out.println(nupp.getText());
 
     }
@@ -197,9 +212,11 @@ public class ValikudController {
                     vastus[0] = nupp.getText();
                     if (vastus[0].contains("aeg")) {
                         ylesannetePiirarvuSisestuslahter.clear();
+                       // raskusastmeSisestuslahter.setDisable(true);
                     }
                     if (vastus[0].contains("hulk")) {
                         ajapiiranguSisestuslahter.clear();
+                       // raskusastmeSisestuslahter.setDisable(true);
                     }
 
                     ajapiiranguSisestuslahter.setDisable(!vastus[0].contains("aeg"));
@@ -223,35 +240,126 @@ public class ValikudController {
         return false; // eelnevalt vaja ära määrata et üks peab vähemalt selekteeritud olema
     }
 
+
+    private boolean raskus(){
+
+        boolean raskusb = false;
+
+        try{int r = Integer.parseInt(raskusastmeSisestuslahter.getText());
+            if(r>10){raskusb = true;}}
+      /*  catch (Exception e){
+            System.out.println("VIGA");
+        }*/
+      finally {
+            return raskusb;
+        }
+
+
+    }
+
+
+    private boolean yl(){
+        boolean yb= false;
+
+        try{int ry = Integer.parseInt(ylesannetePiirarvuSisestuslahter.getText());
+            if(ry>=1){yb = true; }}
+       /* catch (Exception e){
+            System.out.println("VIGA");
+        }*/
+
+       finally {
+           return yb;
+        }
+    }
+
+    private  boolean aeg(){
+        boolean ab= false;
+
+        try{int ry = Integer.parseInt(ajapiiranguSisestuslahter.getText());
+            if(ry>=1){ab = true;} }
+     /*   catch (Exception e){
+            System.out.println("VIGA");
+            }*/
+        finally {return ab;}
+    }
+
     @FXML
     public void lubaAlustada() {
-        String teade="";
 
+/*
         String nimi = lahendajaNimeSisestuslahter.getText();
         String raskusaste = raskusastmeSisestuslahter.getText();
         String ylarv = ylesannetePiirarvuSisestuslahter.getText();
         String aeg = ajapiiranguSisestuslahter.getText();
 
-        boolean onProbleemNimega = nimi.isEmpty();
+
+        boolean raskusb= false;
+        try{int r = Integer.parseInt(raskusastmeSisestuslahter.getText());
+            if(r>10){raskusb = true;}}
+        catch (Exception e){}
+
+
+        boolean yb= false;
+        try{int ry = Integer.parseInt(ylesannetePiirarvuSisestuslahter.getText());
+            if(ry>=1){yb = true; }}
+        catch (Exception e){}
+
+        boolean ab= false;
+        try{int ry = Integer.parseInt(ajapiiranguSisestuslahter.getText());
+            if(ry>=1){ab = true; } }
+        catch (Exception e){}
+
+*/
+
+        boolean onProbleemNimega = lahendajaNimeSisestuslahter.getText().isEmpty();
         ylesanneteHulgaKauduPiiramiseRaadionupp.setDisable(onProbleemNimega);
         ajaKauduPiiramiseRaadionupp.setDisable(onProbleemNimega);
 
-        boolean onProbleemTehetega = nimi.isEmpty() || (ylarv.isEmpty() && aeg.isEmpty());
+        boolean onProbleemTehetega = lahendajaNimeSisestuslahter.getText().isEmpty() || (ylesannetePiirarvuSisestuslahter.getText().isEmpty() && ajapiiranguSisestuslahter.getText().isEmpty()||
+                (ylesanneteHulgaKauduPiiramiseRaadionupp.isSelected()&& !yl()) ||(ajaKauduPiiramiseRaadionupp.isSelected() && !aeg()));
         for (int i = 0; i < nupud.size(); i++) {
             nupud.get(i).setDisable(onProbleemTehetega);
         }
+        raskusastmeSisestuslahter.setDisable(onProbleemTehetega);
+        if(onProbleemTehetega){alustaLahendamistNupp.setDisable(true);}
 
-        if(!raskusaste.isEmpty()){
+        if(raskusastmeSisestuslahter.getText().isEmpty() || !raskus()){ alustaLahendamistNupp.setDisable(true); }
 
 
-                alustaLahendamistNupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");
+        if(raskus()&& (yl() || aeg())){
+
             alustaLahendamistNupp.setDisable(false);
-
-
         }
-        if(!teade.isEmpty()  ){
-        System.out.println(teade);}
+     /*
+      if(!raskusastmeSisestuslahter.getText().isEmpty() && (!ylesannetePiirarvuSisestuslahter.getText().isEmpty()|| !ajapiiranguSisestuslahter.getText().isEmpty())){
+         try{r = raskus();
+              if(raskusastmeSisestuslahter.getText().isEmpty() || r){ alustaLahendamistNupp.setDisable(true); }}
+          catch (Exception e){
+              System.out.println("viga");
+          }
 
+          if(ylesanneteHulgaKauduPiiramiseRaadionupp.isSelected()){
+          try{y = yl();
+
+              if(r && y){
+                  alustaLahendamistNupp.setDisable(false); }}
+          catch (Exception e){
+              System.out.println("viga");
+          }}
+
+          if(ajaKauduPiiramiseRaadionupp.isSelected()){
+          try{a = aeg();
+
+              if(r && a){
+                  alustaLahendamistNupp.setDisable(false); }}
+          catch (Exception e) {
+              System.out.println("viga");
+          }}
+
+
+          if(r && (y ||a)){
+          alustaLahendamistNupp.setDisable(false); }
+      }*/
     }
 
 
@@ -260,17 +368,23 @@ public class ValikudController {
 
 
 
-    private List<Button> nupud = new ArrayList<Button>();
+
+
+
+
+
+    private List<ToggleButton> nupud = new ArrayList<ToggleButton>();
 
 
     public void initialize() {
         alustaLahendamistNupp.setDisable(true);
-
+        alustaLahendamistNupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");
         nupud.add(jagamisNupp);
         nupud.add(plussNupp);
         nupud.add(korrutusNupp);
         nupud.add(miinusNupp);
         for (int i = 0; i < nupud.size(); i++) {
+            nupud.get(i).setStyle("-fx-background-color: rgba(230, 230, 230, 1);");
             nupud.get(i).setDisable(true);
         }
         ylesannetePiirarvuSisestuslahter.setDisable(true);
