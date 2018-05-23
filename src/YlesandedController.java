@@ -197,12 +197,30 @@ public YlesandedController(){}
    }
 
 
+     public boolean vastusVastabFormaadile(){
+        boolean vastab = false;
+        try{
+            int v = Integer.parseInt(vastuseSisestuslahter.getText());
+
+
+        vastab = true;}
+
+        finally { return vastab;
+        }
+     }
+
     @FXML
     private void sisestaVastus(){
-
+        if(vastuseSisestuslahter.getText().isEmpty()){kinnitaVastusNupp.setDisable(true);}
         if(!vastuseSisestuslahter.getText().isEmpty()){
-            kinnitaVastusNupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");
-            kinnitaVastusNupp.setDisable(false);
+            if(vastusVastabFormaadile()){
+                System.out.println("Vastab");
+                kinnitaVastusNupp.setDisable(false);}
+                else{ kinnitaVastusNupp.setDisable(true);}
+
+
+
+
             vastuseSisestuslahter.setOnKeyPressed(new EventHandler<KeyEvent>()
             {
                 @Override
@@ -215,6 +233,7 @@ public YlesandedController(){}
                         Integer vastusInt =Integer.parseInt(vastus);
 
                         vastuseSisestuslahter.clear();
+                        kinnitaVastusNupp.setDisable(true);
                         if(vastusInt.equals(Kontrollvastus)){
                             vastuseHindamiseTekst.setText("Tubli! Õige vastus!");
                             õigeidVastuseid++;
@@ -235,7 +254,8 @@ public YlesandedController(){}
 
                     Integer vastusInt =Integer.parseInt(vastus);
 
-                    vastuseSisestuslahter.clear(); vastuseSisestuslahter.clear();
+                    vastuseSisestuslahter.clear();
+                    kinnitaVastusNupp.setDisable(true);
                     if(vastusInt.equals(Kontrollvastus)){
                         vastuseHindamiseTekst.setText("Tubli! Õige vastus!");
                         õigeidVastuseid++;
@@ -301,6 +321,7 @@ public YlesandedController(){}
     @FXML
     private void initialize(){
         kinnitaVastusNupp.setDisable(true);
+        kinnitaVastusNupp.setStyle("-fx-background-color: rgba(0, 204, 0, 1);");
         System.out.println("2");
 
 
