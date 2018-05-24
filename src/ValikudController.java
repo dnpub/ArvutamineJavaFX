@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.FontSmoothingType;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.text.Style;
@@ -63,6 +64,8 @@ public class ValikudController {
     @FXML
     private RadioButton ajaKauduPiiramiseRaadionupp;
 
+    @FXML
+    public Text valikud;
 
     @FXML
     private RadioButton ylesanneteHulgaKauduPiiramiseRaadionupp;
@@ -71,11 +74,15 @@ public class ValikudController {
     public Set<String> tehted = new HashSet<String>();
     private List<ToggleButton> nupud = new ArrayList<ToggleButton>();
 
+
+
+
+
     @FXML
     private void avaAbiinfo() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Abiinfo.fxml"));
         Stage stage = new Stage();
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root));
         stage.show();
 
     }
@@ -91,7 +98,9 @@ public class ValikudController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Ylesanded.fxml"));
         Parent root = loader.load();
+
         YlesandedController ylesandedController = loader.getController();
+
         ylesandedController.setLahendajaNimiTekst(lahendajaNimeSisestuslahter.getText());
         ylesandedController.setTeheteValikTekst(tehted);
         ylesandedController.setRaskusasteTekst(raskusastmeSisestuslahter.getText());
@@ -115,11 +124,13 @@ public class ValikudController {
             ylesandedController.setHarjutuskord(h1);
             ylesandedController.setYlesandeTekst(h1);}
 
-
-        abiinfoNuppValikudLehel.getScene().setRoot(root);
+        Scene scene= abiinfoNuppValikudLehel.getScene();
+        scene.setRoot(root); // leia praegune scene ja muuda see root sceniks
 
 
     }
+
+
 
     @FXML
     private void vajutaTehe(Event evt) {

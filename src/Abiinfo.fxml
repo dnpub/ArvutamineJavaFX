@@ -11,8 +11,9 @@
 
 <AnchorPane fx:id="ankruPaan" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AbiinfoController">
    <children>
-    <Button fx:id="abiinfoSulgeNupp" layoutX="533.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#sulgeAbiinfo" text="Sulge" />
-      <TextFlow fx:id="tekstiRaam" layoutX="14.0" layoutY="57.0" prefHeight="337.0" prefWidth="580.0">
+       <Button fx:id="abiinfoSulgeNupp" accessibleRole="PARENT" layoutX="533.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#sulgeAbiinfo" text="Sulge" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+
+       <TextFlow fx:id="tekstiRaam" layoutX="14.0" layoutY="57.0" prefHeight="337.0" prefWidth="580.0">
          <children>
             <Text fx:id="abiinfoTekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Programm on valminud TÜ loengukursuse &quot;Objektorienteeritud programmeerimine&quot; rühmatööna.&#10;Autorid: Eliko Tõldsepp, Alo Joosepson&#10; &#10;Leht VALIKUD&#10; &#10;.....&#10; &#10; &#10;Leht ÜLESANDED&#10; &#10;......" wrappingWidth="513.69677734375" />
          </children>

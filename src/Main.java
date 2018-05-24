@@ -16,14 +16,18 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Valikud.fxml"));
         Parent root = loader.load();
-        ValikudController valikudController = loader.getController();
+        Scene scene = new Scene(root, 600, 400);
+     //   ValikudController valikudController = loader.getController();
+   //     valikudController.valikud.layoutXProperty().bind(scene.widthProperty().subtract(valikudController.valikud.prefWidth(-1)).divide(2));
 
 
         primaryStage.setTitle("Arvutamise harjutamine ver.2.0");
 
 
         //TextField lahendajaNimeSisestuslahter = new TextField();
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(scene);
+        primaryStage.setMinWidth(600);
+        primaryStage.setMinHeight(400);
         primaryStage.show();
 
     }

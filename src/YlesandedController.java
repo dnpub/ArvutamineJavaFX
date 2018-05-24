@@ -190,7 +190,9 @@ public YlesandedController(){}
             ylesandeTekst.setText("");
 
             timeline.stop();
+
                 katkestaNuppYlesandedLehel.setText("Sulge");
+
             vastuseHindamiseTekst.setText("Tubli! Kõik ülesanded on lahendatud! Tulemused salvestati!");
                 harjutuskord.setLahendamiseAeg(timeseconds.getValue().intValue());//lahendamisaja kättesaadavaks tegemine välja trükkivale komponendile
                 harjutuskord.setLahendatudYlesandeid(ylesandeidVastatud);//lahendatud ülesannete koguse kättesaadavaks tegemine välja trükkivale komponendile
@@ -328,12 +330,9 @@ public YlesandedController(){}
 
     @FXML
     private void avaAbiinfoYl() throws IOException{
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("Abiinfo.fxml"));
-        Parent root = loader.load();
-
-
+        Parent root = FXMLLoader.load(getClass().getResource("Abiinfo.fxml"));
         Stage stage = new Stage();
-        stage.setScene(new Scene(root, 600,400));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
