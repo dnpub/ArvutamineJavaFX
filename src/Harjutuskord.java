@@ -129,4 +129,21 @@ public class Harjutuskord {
 
     }
 
+    public void kirjutaHarjutuskorraTulemusedFaili() throws FileNotFoundException, UnsupportedEncodingException {
+
+        //luuakse faili isend
+        String failinimi = "harjutuskorrad.txt";
+        java.io.File fail = new java.io.File(failinimi);
+
+        //kirjutatakse andmed faili
+        try {
+            FileWriter fw = new FileWriter(failinimi, true); // true tähendab, et andmeid lisatakse faili juurde, mitte ei kirjutata olemasolevaid üle
+            fw.write(this.toString() + "\n");//lisab harjutuskorra kohta andmed stringina faili
+            fw.close();
+        } catch (IOException ioe) {
+            System.err.println("IOException: " + ioe.getMessage());// kui tekib, viga siis näidatakse kasutajale veateadet
+        }
+
+    }
+
 }

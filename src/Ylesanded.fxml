@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,39 +7,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="YlesandedController">
-   <children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="YlesandedController">
+    <children>
 
-            <Button fx:id="abiinfoNuppYlesandedLehel" layoutX="462.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#avaAbiinfoYl" text="Abiinfo" />
-            <Button fx:id="katkestaNuppYlesandedLehel" layoutX="527.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#katkesta" text="Katkesta" />
+        <Button fx:id="abiinfoNuppYlesandedLehel" accessibleRole="PARENT" layoutX="462.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#avaAbiinfoYl" text="Abiinfo" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="1.0" />
+        <Button fx:id="katkestaNuppYlesandedLehel" accessibleRole="PARENT" layoutX="527.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#katkesta" text="Katkesta" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
 
-      <Text layoutX="233.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ÜLESANDED">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="31.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lahendaja:" />
-      <Text fx:id="lahendajaNimiTekst" layoutX="116.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja 1" />
-      <Text layoutX="30.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tehete valik:" />
-      <Text fx:id="teheteValikTekst" layoutX="116.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja 2" />
-      <Text layoutX="30.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Raskusaste:" />
-      <Text fx:id="raskusasteTekst" layoutX="116.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja 3" />
-      <Text layoutX="283.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kulunud/allesjäänud aeg (sek.):" />
-      <Text fx:id="kulunudAegTekst" layoutX="485.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
-      <Text layoutX="282.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ülesandeid tehtud/kokku:" />
-      <Text layoutX="282.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Õigeid vastuseid:" />
-      <Text layoutX="527.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
-      <Text fx:id="allesjaanudAegTekst" layoutX="533.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
-      <Text fx:id="ylesandeidTehtudTekst" layoutX="446.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text layoutX="488.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
-      <Text fx:id="ylesandeidKokkuTekst" layoutX="494.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" />
-      <Text fx:id="oigeidVastuseidTekst" layoutX="392.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Line endX="300.0" layoutX="282.0" layoutY="172.0" startX="-250.0" />
-      <Line endX="300.0" layoutX="282.0" layoutY="212.0" startX="-250.0" />
-      <Text fx:id="vastuseHindamiseTekst" layoutX="198.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" />
-      <Text fx:id="ylesandeTekst" layoutX="184.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja ülesande teksti jaoks" textAlignment="CENTER" />
-      <Text fx:id="sisestaVastusTekst" layoutX="236.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta vastus (täisarv):" textAlignment="CENTER" />
-      <TextField fx:id="vastuseSisestuslahter" layoutX="223.0" layoutY="280.0" onKeyReleased="#sisestaVastus" />
-      <Button fx:id="kinnitaVastusNupp" layoutX="218.0" layoutY="319.0" mnemonicParsing="false" onMouseClicked="#sisestaVastus" prefHeight="47.0" prefWidth="177.0" text="Kinnita vastus (ENTER)" />
-   </children>
+        <Text accessibleRole="PARENT" layoutX="233.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ÜLESANDED" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="246.82421875" AnchorPane.topAnchor="21.6640625">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Text>
+        <Text accessibleRole="PARENT" layoutX="31.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lahendaja:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="81.0" />
+        <Text fx:id="lahendajaNimiTekst" layoutX="116.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja 1" />
+        <Text layoutX="30.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tehete valik:" />
+        <Text fx:id="teheteValikTekst" layoutX="116.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja 2" />
+        <Text layoutX="30.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Raskusaste:" />
+        <Text fx:id="raskusasteTekst" layoutX="116.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja 3" />
+        <Text accessibleRole="PARENT" layoutX="283.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kulunud/allesjäänud aeg (sek.):" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="81.0" />
+        <Text fx:id="kulunudAegTekst" accessibleRole="PARENT" layoutX="485.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="81.0" />
+        <Text layoutX="282.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ülesandeid tehtud/kokku:" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="106.0" />
+        <Text accessibleRole="PARENT" layoutX="282.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Õigeid vastuseid:" AnchorPane.rightAnchor="211.96240234375" AnchorPane.topAnchor="130.0" />
+        <Text accessibleRole="PARENT" layoutX="527.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" AnchorPane.rightAnchor="68.6708984375" AnchorPane.topAnchor="80.0" />
+        <Text fx:id="allesjaanudAegTekst" accessibleRole="PARENT" layoutX="533.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="81.0" />
+        <Text fx:id="ylesandeidTehtudTekst" accessibleRole="PARENT" layoutX="446.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="106.0" />
+        <Text accessibleRole="PARENT" layoutX="488.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" AnchorPane.rightAnchor="107.6708984375" AnchorPane.topAnchor="106.0" />
+        <Text fx:id="ylesandeidKokkuTekst" accessibleRole="PARENT" layoutX="494.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99999" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="106.0" />
+        <Text fx:id="oigeidVastuseidTekst" accessibleRole="PARENT" layoutX="392.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="130.0" />
+        <Line accessibleRole="PARENT" endX="300.0" layoutX="282.0" layoutY="172.0" startX="-250.0" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="17.5" />
+        <Line accessibleRole="PARENT" endX="300.0" layoutX="282.0" layoutY="212.0" startX="-250.0" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="17.5" AnchorPane.topAnchor="211.5" />
+        <Text fx:id="vastuseHindamiseTekst" accessibleRole="PARENT" layoutX="198.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="172.7197265625" />
+        <Text fx:id="ylesandeTekst" accessibleRole="PARENT" layoutX="184.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajutine kohahoidja ülesande teksti jaoks" textAlignment="CENTER" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="172.7197265625" />
+        <Text fx:id="sisestaVastusTekst" accessibleRole="PARENT" layoutX="236.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sisesta vastus (täisarv):" textAlignment="CENTER" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="172.7197265625" />
+        <TextField fx:id="vastuseSisestuslahter" accessibleRole="PARENT" layoutX="223.0" layoutY="280.0" onKeyReleased="#sisestaVastus" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="210.0" />
+        <Button fx:id="kinnitaVastusNupp" accessibleRole="PARENT" layoutX="218.0" layoutY="319.0" mnemonicParsing="false" onMouseClicked="#sisestaVastus" prefHeight="47.0" prefWidth="177.0" text="Kinnita vastus (ENTER)" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="205.0" />
+    </children>
 </AnchorPane>

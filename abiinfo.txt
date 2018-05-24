@@ -1,0 +1,25 @@
+Programm on valminud TÜ loengukursuse "Objektorienteeritud programmeerimin" rühmatööna.
+
+Autorid: Eliko Tõldsepp, Alo Joosepson
+
+Leht VALIKUD
+
+1. Sisesta oma nimi. Kui kasutad programmi palju kordi, siis kasuta sama nime, sest siis saad logifailist lihtsamini leida oma harjutuskordade stastikaks vajalikud andmed.
+2. Vali, kas harjutuskorra puhul piirata ülesannete hulka või ülesannete lahendamise aega.
+3. Vastavalt tehtud valikule täida ära piirarvu lahter sama rea parempoolses servas. Piirangu lahtrisse saab sisestada ainult täisarve.
+4. Vali (kliki kiirega) üks või mitu tehet, mida soovid harjutada. Vähemalt 1 peab olema valitud.
+5. Sisesta kümbest suurem arv raskusastme lahtrisse. See piirab vastuste maksimaalse suuruse.
+6. Anna käsk lahendamise alustamiseks.
+
+Leht ÜLESANDED
+
+Ülemine vasak tulp  lehest kuvab sinu tehtud valikuid, mis selle harjutuskorra ajal kehtivad.
+Ülemine parem tulp kuvab statistikat sinu lahendamise kohta.
+
+Kahe joone vahele kuvatakse üga ülesande kohta tulemus - kas vastasid õigesti või valesti.
+
+Teise joone alla kuvatakse ülesande tekst.
+
+Sisestuslahtrisse tuleb sisestada täisarv.
+
+Oma vastuse kinnitamiseks vajuta klaviatuuril Enter või hiirega nupule "Kinnita vastus".

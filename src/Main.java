@@ -22,7 +22,7 @@ public class Main extends Application {
         primaryStage.setTitle("Arvutamise harjutamine ver.2.0");
 
 
-        TextField lahendajaNimeSisestuslahter = new TextField();
+        //TextField lahendajaNimeSisestuslahter = new TextField();
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
 
