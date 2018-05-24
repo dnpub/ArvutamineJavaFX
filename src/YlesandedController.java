@@ -1,11 +1,4 @@
-/*TODO: akna mõõtmete muutmine - seo sisuga
-/TODO: vigade händlimine (täisarvud) ja esitus valikud aknas
-TODO: kujundus
-TODO: abiinfo import failist
-TODO: harjutuskäigu statistika salvestamine faili - vastav nupp või hüpikaken Ylesanded lehele.
-TODO: kujundus
-TODO: koodi optimeerimine
-*/
+
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -106,7 +99,7 @@ public YlesandedController(){}
 
     private Harjutuskord harjutuskord;
 
-   // public final Integer endtime =15; // siia tuleb panna määratud aeg
+   // public final Integer endtime =15; // testimiseks
     private Integer starttime =0;
     private Timeline timeline;
     private IntegerProperty timeseconds;//= new SimpleIntegerProperty(starttime);
@@ -135,7 +128,7 @@ public YlesandedController(){}
                 new KeyFrame(Duration.seconds(endtime+1),
                         new KeyValue(timeseconds2, 0)));
 
-        timeline.setOnFinished(event -> {vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis!\n Tulemused salvestati!" );
+        timeline.setOnFinished(event -> {vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis! Tulemused salvestati!" );
             kinnitaVastusNupp.setDisable(true);
             vastuseSisestuslahter.setDisable(true);
             ylesandeTekst.setText("");
@@ -175,8 +168,7 @@ public YlesandedController(){}
    }
 @FXML
    public void setYlesandeTekst(Harjutuskord h){
-      // ylesandeTekst.setTextOrigin(VPos.TOP);
-      // Scene scene = ylesandeTekst.getScene();
+
 
         Ülesanne yl1 = h.genereeriÜlesanne();
         if(kasAjaPeale){
@@ -185,13 +177,7 @@ public YlesandedController(){}
             ylesandeTekst.setText(yl1.toString());
 
         Kontrollvastus =Integer.parseInt(yl1.getVastus());}
-       /* else if(Integer.parseInt(kulunudAegTekst.getText())>=kontrollAeg){
-           // System.out.println(kulunudAegTekst.getText());
-            //System.out.println(kontrollAeg);
-            kinnitaVastusNupp.setDisable(true);
-            vastuseSisestuslahter.setDisable(true);
-           // vastuseHindamiseTekst.setText("Tubli! Ajalimiit on täis!"); //
-            }*/
+
         }
         if(!kasAjaPeale){
             if(Integer.parseInt(ylesandeidTehtudTekst.getText()) < Integer.parseInt(ylesandeidKokkuTekst.getText())){
@@ -205,7 +191,7 @@ public YlesandedController(){}
 
             timeline.stop();
                 katkestaNuppYlesandedLehel.setText("Sulge");
-            vastuseHindamiseTekst.setText("Tubli! Kõik ülesanded on lahendatud!\n Tulemused salvestati!");
+            vastuseHindamiseTekst.setText("Tubli! Kõik ülesanded on lahendatud! Tulemused salvestati!");
                 harjutuskord.setLahendamiseAeg(timeseconds.getValue().intValue());//lahendamisaja kättesaadavaks tegemine välja trükkivale komponendile
                 harjutuskord.setLahendatudYlesandeid(ylesandeidVastatud);//lahendatud ülesannete koguse kättesaadavaks tegemine välja trükkivale komponendile
                 harjutuskord.setOigeidVastuseid(õigeidVastuseid);//õiged vastused väljatrükkijale kättesaadavaks

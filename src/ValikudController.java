@@ -68,6 +68,9 @@ public class ValikudController {
     private RadioButton ylesanneteHulgaKauduPiiramiseRaadionupp;
 
 
+    public Set<String> tehted = new HashSet<String>();
+    private List<ToggleButton> nupud = new ArrayList<ToggleButton>();
+
     @FXML
     private void avaAbiinfo() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Abiinfo.fxml"));
@@ -75,11 +78,7 @@ public class ValikudController {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
-
     }
-
-    @FXML
-    private ToggleButton togglebutton;
 
     @FXML
     private void välju() {
@@ -122,37 +121,6 @@ public class ValikudController {
 
     }
 
-
-    public Set<String> tehted = new HashSet<String>();
-
-@FXML private void vajutatogglenupp() {
-    }
-    /*@FXML
-    private void vajutaPlussNupp() {
-        raskusastmeSisestuslahter.setDisable(false);
-        plussNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-            }
-        });
-        tehted.add("+");
-        System.out.println("+");
-    }
-
-    @FXML
-    private void vajutaMiinusNupp() {
-        raskusastmeSisestuslahter.setDisable(false);
-        miinusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-            }
-        });
-        tehted.add("-");
-        System.out.println("-");
-    }*/
-
     @FXML
     private void vajutaTehe(Event evt) {
         ToggleButton nupp = (ToggleButton)evt.getSource();
@@ -171,32 +139,6 @@ public class ValikudController {
         System.out.println(nupp.getText());
 
     }
-
- /*   @FXML
-    private void vajutaJagamisNupp() {
-        raskusastmeSisestuslahter.setDisable(false);
-        jagamisNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-            }
-        });
-        tehted.add("/");
-        System.out.println("/");
-    }*/
-
-   /* @FXML
-    private void vajutaKorrutusNupp() {
-        raskusastmeSisestuslahter.setDisable(false);
-        korrutusNupp.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-            }
-        });
-        tehted.add("*");
-        System.out.println("*");
-    }*/
 
     @FXML
     public boolean kasAjapeale() {
@@ -237,7 +179,7 @@ public class ValikudController {
             return true;
         }
 
-        return false; // eelnevalt vaja ära määrata et üks peab vähemalt selekteeritud olema
+        return false;
     }
 
 
@@ -247,9 +189,6 @@ public class ValikudController {
 
         try{int r = Integer.parseInt(raskusastmeSisestuslahter.getText());
             if(r>10){raskusb = true;}}
-      /*  catch (Exception e){
-            System.out.println("VIGA");
-        }*/
       finally {
             return raskusb;
         }
@@ -263,9 +202,6 @@ public class ValikudController {
 
         try{int ry = Integer.parseInt(ylesannetePiirarvuSisestuslahter.getText());
             if(ry>=1){yb = true; }}
-       /* catch (Exception e){
-            System.out.println("VIGA");
-        }*/
 
        finally {
            return yb;
@@ -277,39 +213,12 @@ public class ValikudController {
 
         try{int ry = Integer.parseInt(ajapiiranguSisestuslahter.getText());
             if(ry>=1){ab = true;} }
-     /*   catch (Exception e){
-            System.out.println("VIGA");
-            }*/
+
         finally {return ab;}
     }
 
     @FXML
     public void lubaAlustada() {
-
-/*
-        String nimi = lahendajaNimeSisestuslahter.getText();
-        String raskusaste = raskusastmeSisestuslahter.getText();
-        String ylarv = ylesannetePiirarvuSisestuslahter.getText();
-        String aeg = ajapiiranguSisestuslahter.getText();
-
-
-        boolean raskusb= false;
-        try{int r = Integer.parseInt(raskusastmeSisestuslahter.getText());
-            if(r>10){raskusb = true;}}
-        catch (Exception e){}
-
-
-        boolean yb= false;
-        try{int ry = Integer.parseInt(ylesannetePiirarvuSisestuslahter.getText());
-            if(ry>=1){yb = true; }}
-        catch (Exception e){}
-
-        boolean ab= false;
-        try{int ry = Integer.parseInt(ajapiiranguSisestuslahter.getText());
-            if(ry>=1){ab = true; } }
-        catch (Exception e){}
-
-*/
 
         boolean onProbleemNimega = lahendajaNimeSisestuslahter.getText().isEmpty();
         ylesanneteHulgaKauduPiiramiseRaadionupp.setDisable(onProbleemNimega);
@@ -330,51 +239,8 @@ public class ValikudController {
 
             alustaLahendamistNupp.setDisable(false);
         }
-     /*
-      if(!raskusastmeSisestuslahter.getText().isEmpty() && (!ylesannetePiirarvuSisestuslahter.getText().isEmpty()|| !ajapiiranguSisestuslahter.getText().isEmpty())){
-         try{r = raskus();
-              if(raskusastmeSisestuslahter.getText().isEmpty() || r){ alustaLahendamistNupp.setDisable(true); }}
-          catch (Exception e){
-              System.out.println("viga");
-          }
 
-          if(ylesanneteHulgaKauduPiiramiseRaadionupp.isSelected()){
-          try{y = yl();
-
-              if(r && y){
-                  alustaLahendamistNupp.setDisable(false); }}
-          catch (Exception e){
-              System.out.println("viga");
-          }}
-
-          if(ajaKauduPiiramiseRaadionupp.isSelected()){
-          try{a = aeg();
-
-              if(r && a){
-                  alustaLahendamistNupp.setDisable(false); }}
-          catch (Exception e) {
-              System.out.println("viga");
-          }}
-
-
-          if(r && (y ||a)){
-          alustaLahendamistNupp.setDisable(false); }
-      }*/
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    private List<ToggleButton> nupud = new ArrayList<ToggleButton>();
-
 
     public void initialize() {
         alustaLahendamistNupp.setDisable(true);
@@ -392,10 +258,5 @@ public class ValikudController {
         raskusastmeSisestuslahter.setDisable(true);
         ajaKauduPiiramiseRaadionupp.setDisable(true);
         ylesanneteHulgaKauduPiiramiseRaadionupp.setDisable(true);
-
-
-
     }
-
-
 }

@@ -14,10 +14,11 @@
 <AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ValikudController">
    <children>
 
-            <Button fx:id="abiinfoNuppValikudLehel" layoutX="486.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#avaAbiinfo" text="Abiinfo" />
-          <Button fx:id="valjuNuppValikudLehel" layoutX="550.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#välju" text="Välju" />
+       <Button fx:id="abiinfoNuppValikudLehel" accessibleRole="PARENT" layoutX="486.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#avaAbiinfo" text="Abiinfo" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="1.0" />
+       <Button fx:id="valjuNuppValikudLehel" accessibleRole="PARENT" layoutX="550.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#välju" text="Välju" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
 
-      <Text accessibleRole="PARENT" layoutX="257.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VALIKUD" textAlignment="CENTER" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="256.759765625" AnchorPane.topAnchor="21.0">
+
+       <Text accessibleRole="PARENT" layoutX="257.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VALIKUD" textAlignment="CENTER" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="256.759765625" AnchorPane.topAnchor="21.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
